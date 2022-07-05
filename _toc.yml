@@ -1,0 +1,86 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: chapters/intro
+title: About me
+
+# sections:
+# - file: chapters/research/notebooks
+parts:
+- caption: Mathematics
+  numbered: 2
+  chapters:
+  # - file: chapters/Convexity
+  - file: chapters/1/linear algebra
+    sections:
+    - url: https://eetose.github.io/docs/math/linear%20algebra/essence/
+      title: Essence
+  - file: chapters/2/statistics
+    sections: 
+    - file: chapters/2/1/measure
+    - file: chapters/2/1/normal_distribution
+
+- caption: Coding
+  numbered: 2                     # Only the Coding part is numbered
+  chapters:
+  # data structure
+  - file: chapters/3/datastruct
+    sections:
+    - file: chapters/3/1/heap
+    - file: chapters/3/2/BST
+    - file: chapters/3/3/graph 
+
+  # algorithms   
+  - file: chapters/4/algorithms
+
+  # language 
+  - file: chapters/5/language
+    sections:
+    # Python
+    - file: chapters/5/1/python
+      sections:
+      - file: chapters/5/1/env
+      - file: chapters/5/1/modules
+    # C/C++
+    - file: chapters/5/2/c 
+
+- caption: AI
+  numbered: 2
+  chapters:
+  - file: chapters/6/ml
+  - file: chapters/7/dl
+
+- caption: Computer Vision
+  numbered: 2
+  chapters:
+  # image processing
+  - file: chapters/8/image
+    sections:
+    - file: chapters/8/1/filtering
+    - file: chapters/8/2/fuzzy 
+    - file: chapters/8/3/edge
+    - file: chapters/8/4/corner
+  # computer vision
+  - file: chapters/9/cv
+
+# Research
+- caption: Research
+  chapters:
+  - file: chapters/10/results
+  # research fields
+  - file: chapters/10/1/fields
+    sections:
+    - file: chapters/10/1/1/how
+    - file: chapters/10/1/2/follows
+    - file: chapters/10/1/3/tool
+  # projects
+  - file: chapters/10/2/project
+    sections:   
+    - file: chapters/10/2/1/smartcampus
+    - file: chapters/10/2/2/Zeiss 
+      sections:
+      - file: chapters/10/2/2/image_formation
+    - file: chapters/10/2/3/wpt
+
+

@@ -1,0 +1,36 @@
+# Book settings
+title: Intellectual Tree
+author: Sheng Li
+email: ''
+logo                        : images/blog/logo.png # A path to the book logo
+
+#######################################################################################
+# Execution settings
+execute:
+  execute_notebooks         : 'off'  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  timeout                   : 600    # The maximum time (in seconds) each notebook cell is allowed to run.
+
+#######################################################################################
+# HTML-specific settings
+html:
+  favicon                   : images/blog/seu.png  # A path to a favicon image
+  # google_analytics_id     : "G-JNKE33XNJQ" # A GA id that can be used to track book views.
+  home_page_in_navbar       : false  # Whether to include your home page in the left Navigation Bar
+  use_repository_button     : true
+  use_edit_page_button      : true
+  use_issues_button         : false
+  use_multitoc_numbering    : true
+  comments:
+    hypothesis: true
+
+#######################################################################################
+repository:
+  url                       : https://github.com/shengli-seu/shengli-seu.github.io  # The URL to your book's repository
+  branch                    : main  # Which branch of the repository should be used when creating links
+
+# Disable building files that aren’t in the Table of Contents
+only_build_toc_files: true
+
+sphinx:
+  extra_extensions:
+    - sphinx_multitoc_numbering         # sphinx extension supporting continuous numbering
