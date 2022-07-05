@@ -20,12 +20,13 @@ html:
   use_edit_page_button      : true
   use_issues_button         : false
   use_multitoc_numbering    : true
+  baseurl: https://eetose.github.io/
   comments:
     hypothesis: true
 
 #######################################################################################
 repository:
-  url                       : https://github.com/shengli-seu/shengli-seu.github.io  # The URL to your book's repository
+  url                       : https://github.com/EeToSe/EeToSe.github.io  # The URL to your book's repository
   branch                    : main  # Which branch of the repository should be used when creating links
 
 # Disable building files that aren’t in the Table of Contents
