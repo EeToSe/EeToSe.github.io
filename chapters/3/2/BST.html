@@ -1,0 +1,1120 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3.2. Binary Search Tree &#8212; Intellectual Tree</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../../../_static/seu.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.3. Graphs" href="../3/graph.html" />
+    <link rel="prev" title="3.1. Heap" href="../1/heap.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Intellectual Tree</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Mathematics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../1/linear%20algebra.html">
+   1. Linear Algebra
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference external" href="https://eetose.github.io/docs/math/linear%20algebra/essence/">
+     Essence
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../2/statistics.html">
+   2. Probability-Statistics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../2/1/measure.html">
+     2.1. Measure Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../2/1/normal_distribution.html">
+     2.2. Normal distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Coding
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../datastruct.html">
+   3. Data Structure
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1/heap.html">
+     3.1. Heap
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.2. Binary Search Tree
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/graph.html">
+     3.3. Graphs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../4/algorithms.html">
+   4. Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../5/language.html">
+   5. Programming language
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../5/1/python.html">
+     5.1. Python
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../5/1/env.html">
+       Virtual environments
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../5/1/modules.html">
+       Modules
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5/2/c.html">
+     5.2. C/C++
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  AI
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../6/ml.html">
+   6. Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../7/dl.html">
+   7. Deep Learning
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer Vision
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../8/image.html">
+   8. Image processing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../8/1/filtering.html">
+     8.1. Image Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../8/2/fuzzy.html">
+     8.2. Fuzzy logic theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../8/3/edge.html">
+     8.3. Edge Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../8/4/corner.html">
+     8.4. Corner Detection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../9/cv.html">
+   9. Computer Vision
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Research
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../10/results.html">
+   Daily
+   <s>
+    tasks
+   </s>
+   results
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../10/1/fields.html">
+   Research fields
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../10/1/1/how.html">
+     How-to
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../10/1/2/follows.html">
+     Following
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../10/1/3/tool.html">
+     Efficiency tools
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../10/2/project.html">
+   Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../10/2/1/smartcampus.html">
+     Data Analysis for Smart Buildings
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../10/2/2/Zeiss.html">
+     Zeiss algorithm develop
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../10/2/2/image_formation.html">
+       Image formation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../10/2/3/wpt.html">
+     WPT foreign object detection
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/shengli-seu/shengli-seu.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/shengli-seu/shengli-seu.github.io/edit/main/chapters/3/2/BST.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/chapters/3/2/BST.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#runway-reservation-system">
+   引子：Runway Reservation System
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#can-we-do-better-compared-with-previous">
+   Can we do better compared with previous
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bst">
+   BST
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#property">
+     Property
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inorder-tree-walk">
+     Inorder tree walk
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unit-test">
+   Unit_test
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Binary Search Tree</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#runway-reservation-system">
+   引子：Runway Reservation System
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#can-we-do-better-compared-with-previous">
+   Can we do better compared with previous
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bst">
+   BST
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#property">
+     Property
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inorder-tree-walk">
+     Inorder tree walk
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unit-test">
+   Unit_test
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="binary-search-tree">
+<h1><span class="section-number">3.2. </span>Binary Search Tree<a class="headerlink" href="#binary-search-tree" title="Permalink to this headline">#</a></h1>
+<section id="runway-reservation-system">
+<h2>引子：Runway Reservation System<a class="headerlink" href="#runway-reservation-system" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Airpot with a single runway</p></li>
+<li><p>Reserve req specify “requested landing time” t</p></li>
+<li><p>Add t to the set if no other landings are scheduled within k minutes.</p></li>
+<li><p>Remove t from set R after it lands</p></li>
+</ul>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<p><img alt="" src="../../../_images/example_runway.jpg" /></p>
+<p>Request for time: 44 not allowed (46 ∈ R); 53 OK; 20 not allowed (already past)</p>
+</section>
+</section>
+<section id="can-we-do-better-compared-with-previous">
+<h2>Can we do better compared with previous<a class="headerlink" href="#can-we-do-better-compared-with-previous" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><strong>Sorted array</strong>: a k minute check can be done in O(1) but insertion(shifting) takes O(n).</p></li>
+<li><p><strong>Min heap</strong>: insert in O(lgn) time but k minute check takes O(n) time</p></li>
+<li><p><strong>Sorted linked list</strong>: cant do the binary search.</p></li>
+</ul>
+</section>
+<section id="bst">
+<h2>BST<a class="headerlink" href="#bst" title="Permalink to this headline">#</a></h2>
+<p><img alt="" src="../../../_images/example_bst.jpg" /></p>
+<section id="property">
+<h3>Property<a class="headerlink" href="#property" title="Permalink to this headline">#</a></h3>
+<p>Let x be a node in a binary search tree:</p>
+<ul class="simple">
+<li><p>If y is a node in the left subtree of x, then <span class="math notranslate nohighlight">\(y.key &lt;= x.key\)</span>.</p></li>
+<li><p>If y is a node in the right subtree of x, then <span class="math notranslate nohighlight">\(y.key &gt;= x.key\)</span>.</p></li>
+</ul>
+</section>
+<section id="inorder-tree-walk">
+<h3>Inorder tree walk<a class="headerlink" href="#inorder-tree-walk" title="Permalink to this headline">#</a></h3>
+<p>The binary-search-tree property allows us to print out all the keys in sorted order.</p>
+<ul class="simple">
+<li><p><strong>preorder tree walk</strong> prints the root before the values in either subtree as shown <a class="reference internal" href="#inorder"><span class="std std-numref">Fig. 3.1</span></a></p></li>
+<li><p><strong>a postorder tree walk</strong> prints the root after the values in its subtrees.)</p></li>
+</ul>
+<figure class="align-center" id="inorder">
+<a class="reference internal image-reference" href="../../../_images/pseudo_inorder-tree-walk.png"><img alt="../../../_images/pseudo_inorder-tree-walk.png" src="../../../_images/pseudo_inorder-tree-walk.png" style="width: 316.0px; height: 118.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Pseudocode inorder tree walk</span><a class="headerlink" href="#inorder" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Class functions</div>
+<p class="sd-card-text"><em>find(k)</em>, <em>find min()</em>, <em>insert(x)</em>, <em>next_larger(x)</em>(<em>successor</em>) and <em>delete()</em>.</p>
+<ul>
+<li><p class="sd-card-text"><strong>find(k)</strong>: Follow left and right pointers(binary search) until you find it or hit NIL.</p></li>
+<li><p class="sd-card-text"><strong>find min( )</strong>: keep going left until hit NIL</p></li>
+<li><p class="sd-card-text"><strong>insert(x)</strong>: two pointers - prev and current, follow left and right until current hit NIL</p></li>
+<li><p class="sd-card-text"><strong>next_larger(x)</strong>: find_min() if node x has a right subtree, or traverse up-left until reach a node y that is a left child, return y’s parent.</p></li>
+<li><p class="sd-card-text"><strong>deletion(x)</strong>: tricky!</p>
+<ul class="simple">
+<li><p class="sd-card-text">Case 1: x has no children. Just delete it (i.e. change its parent node so that it doesn’t point to
+x).</p></li>
+<li><p class="sd-card-text">Case 2: x has one child. Splice out x by linking x’s parent to x’s child.</p></li>
+<li><p class="sd-card-text">Case 3: x has two children. Swap x with x’s successor and splice out x by linking x’s parent to x’s child.
+Case 1 and Case 2 can be combined.</p></li>
+</ul>
+<p class="sd-card-text"><strong>Special case</strong>: Delete the root node</p>
+<ol class="simple">
+<li><p class="sd-card-text">create a sentinel node</p></li>
+<li><p class="sd-card-text">link the sentinel node with root</p></li>
+<li><p class="sd-card-text">delete self.root</p></li>
+<li><p class="sd-card-text">reassign sentinel.left to self.root</p></li>
+<li><p class="sd-card-text">unlink the sentinel node</p></li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<p><a class="reference external" href="https://github.com/EeToSe/Algorithms/blob/main/data-structures/bst.py">Code implementation</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">pickle</span> <span class="kn">import</span> <span class="n">NONE</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">Y</span>
+<span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="n">right</span>
+<span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">sentinel</span>
+
+
+<span class="k">class</span> <span class="nc">BSTNode</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A node in the vanilla BST tree.&quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a node.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            parent: The node&#39;s parent.</span>
+<span class="sd">            k: key of the node.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="kc">None</span>
+  
+    <span class="k">def</span> <span class="nf">_str</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Internal method for ASCII art.&quot;&quot;&quot;</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">left_lines</span><span class="p">,</span> <span class="n">left_pos</span><span class="p">,</span> <span class="n">left_width</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">left_lines</span><span class="p">,</span> <span class="n">left_pos</span><span class="p">,</span> <span class="n">left_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">_str</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">right_lines</span><span class="p">,</span> <span class="n">right_pos</span><span class="p">,</span> <span class="n">right_width</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">right_lines</span><span class="p">,</span> <span class="n">right_pos</span><span class="p">,</span> <span class="n">right_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">_str</span><span class="p">()</span>
+        <span class="n">middle</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">right_pos</span> <span class="o">+</span> <span class="n">left_width</span> <span class="o">-</span> <span class="n">left_pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">left_pos</span> <span class="o">+</span> <span class="n">middle</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="n">left_pos</span> <span class="o">+</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">right_width</span> <span class="o">-</span> <span class="n">right_pos</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">left_lines</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right_lines</span><span class="p">):</span>
+            <span class="n">left_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="n">left_width</span><span class="p">)</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">right_lines</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left_lines</span><span class="p">):</span>
+            <span class="n">right_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="n">right_width</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">middle</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="p">))</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> \
+           <span class="bp">self</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">left</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">middle</span><span class="p">:</span>
+            <span class="n">label</span> <span class="o">+=</span> <span class="s1">&#39;.&#39;</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">middle</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">label</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;.&#39;</span><span class="p">:</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">label</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="n">label</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;.&#39;</span><span class="p">:</span> <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="n">left_pos</span> <span class="o">+</span> <span class="n">label</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="p">(</span><span class="n">right_width</span> <span class="o">-</span> <span class="n">right_pos</span><span class="p">),</span>
+                 <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="n">left_pos</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="p">(</span><span class="n">middle</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span>
+                 <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="p">(</span><span class="n">right_width</span> <span class="o">-</span> <span class="n">right_pos</span><span class="p">)]</span> <span class="o">+</span> \
+          <span class="p">[</span><span class="n">left_line</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="n">left_width</span> <span class="o">-</span> <span class="n">right_width</span><span class="p">)</span> <span class="o">+</span> <span class="n">right_line</span>
+           <span class="k">for</span> <span class="n">left_line</span><span class="p">,</span> <span class="n">right_line</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">left_lines</span><span class="p">,</span> <span class="n">right_lines</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">lines</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">width</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_str</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">inorder_tree_walk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Prints the key of the root of a subtree between the values of its left and right subtrees</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">if</span> <span class="n">current</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inorder_tree_walk</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inorder_tree_walk</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Finds and returns the node with key k from the subtree rooted at this </span>
+<span class="sd">        node in an iterative approach</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            k: The key of the node we want to find.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            The node with key k.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">while</span> <span class="n">current</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">!=</span> <span class="n">current</span><span class="o">.</span><span class="n">key</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">current</span><span class="o">.</span><span class="n">key</span><span class="p">:</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">left</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">right</span>
+        <span class="k">return</span> <span class="n">current</span>
+
+    <span class="k">def</span> <span class="nf">find_min</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Finds the node with the minimum key in the subtree rooted at this </span>
+<span class="sd">        node.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            The node with the minimum key.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">while</span> <span class="n">current</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">left</span>
+        <span class="k">return</span> <span class="n">current</span>
+       
+    <span class="k">def</span> <span class="nf">next_larger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the node with the next larger key (the successor) in the BST.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">find_min</span><span class="p">()</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">parent</span>
+        <span class="k">while</span> <span class="n">prev</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">current</span> <span class="o">==</span> <span class="n">prev</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">prev</span>
+            <span class="n">prev</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">parent</span>
+        <span class="k">return</span> <span class="n">prev</span>
+
+    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inserts a node into the subtree rooted at this node.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            node: The node to be inserted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">while</span> <span class="n">current</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">prev</span> <span class="o">=</span> <span class="n">current</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">current</span><span class="o">.</span><span class="n">key</span><span class="p">:</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">left</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">right</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">prev</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">prev</span><span class="o">.</span><span class="n">key</span><span class="p">:</span>
+            <span class="n">prev</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">prev</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">node</span>
+  
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Deletes and returns this node from the BST.&quot;&quot;&quot;</span>
+        <span class="c1"># Case 1 &amp; 2 (Opposite to Case 3)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">left</span> <span class="o">==</span> <span class="bp">self</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span>
+                <span class="c1"># Check if self has a child</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span>
+            
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span>
+                <span class="c1"># Check if self has a child</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span>            
+            <span class="k">return</span> <span class="bp">self</span>
+
+        <span class="c1"># Case 3: node has two children</span>
+        <span class="c1"># Find the next larger(dont have the left child - proof by contradiction)</span>
+        <span class="n">next_larger</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_larger</span><span class="p">()</span>
+        <span class="n">next_larger</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="n">next_larger</span><span class="o">.</span><span class="n">key</span>
+        <span class="k">return</span> <span class="n">next_larger</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">check_ri</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Checks the BST representation invariant around this node.</span>
+<span class="sd">    </span>
+<span class="sd">        Raises an exception if the RI is violated.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">key</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;BST RI violated by a left node key&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;BST RI violated by a left node parent &quot;</span>
+                                   <span class="s2">&quot;pointer&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">check_ri</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">key</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;BST RI violated by a right node key&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;BST RI violated by a right node parent &quot;</span>
+                                   <span class="s2">&quot;pointer&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">check_ri</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">BST</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A binary search tree.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">klass</span> <span class="o">=</span> <span class="n">BSTNode</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates an empty BST.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            klass (optional): The class of the node in the BST. Default to </span>
+<span class="sd">                BSTNode.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">klass</span> <span class="o">=</span> <span class="n">klass</span>
+        
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;&lt;empty tree&gt;&#39;</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Finds and returns the node with key k from the subtree rooted at this </span>
+<span class="sd">        node.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            k: The key of the node we want to find.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            The node with key k or None if the tree is empty.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+                
+    <span class="k">def</span> <span class="nf">find_min</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the minimum node of this BST.&quot;&quot;&quot;</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">find_min</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inserts a node with key k into the subtree rooted at this node.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            k: The key of the node to be inserted.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            The node inserted.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">klass</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># The root&#39;s parent is None.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span>
+            
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Deletes and returns a node with key k if it exists from the BST.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            k: The key of the node that we want to delete.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            The deleted node with key k.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="c1"># Special case: root node has no parent </span>
+        <span class="c1"># which may cause None violation in Case 1 or 2 </span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">:</span>
+            <span class="c1"># create a sentinel node and link with the root</span>
+            <span class="n">sentinel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">klass</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">sentinel</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">sentinel</span>
+            <span class="n">deleted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">sentinel</span><span class="o">.</span><span class="n">left</span>
+            <span class="c1"># unlink the sentinel node</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">sentinel</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">deleted</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">next_larger</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the node that contains the next larger (the successor) key in</span>
+<span class="sd">        the BST in relation to the node with key k.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            k: The key of the node of which the successor is to be found.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            The successor node.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">node</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">next_larger</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">check_ri</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Checks the BST representation invariant.</span>
+<span class="sd">        </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            An exception if the RI is violated.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;BST RI violated by the root node&#39;s parent &quot;</span> 
+                                   <span class="s2">&quot;pointer.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">check_ri</span><span class="p">()</span>
+    
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">BSTtype</span><span class="o">=</span><span class="n">BST</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">sys</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;usage: </span><span class="si">%s</span><span class="s1"> &lt;number-of-random-items | item item item ...&gt;&#39;</span> <span class="o">%</span> \
+              <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">BSTtype</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">tree</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+    <span class="n">tree_root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">root</span>
+    <span class="n">tree_root</span><span class="o">.</span><span class="n">inorder_tree_walk</span><span class="p">(</span><span class="n">tree_root</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span> 
+    <span class="n">test</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="unit-test">
+<h2>Unit_test<a class="headerlink" href="#unit-test" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>The query operations offered by the data structure are guaranteed to produce the <strong>correct result</strong>, as long as the representation invariant <strong>holds</strong> (is true).</p></li>
+<li><p>Update operations are guaranteed to <strong>preserve</strong> the representation invariant (if the RI holds
+before the update, it will also hold after the update).</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/3/2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../1/heap.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3.1. </span>Heap</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../3/graph.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>Graphs</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sheng Li<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

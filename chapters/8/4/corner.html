@@ -1,0 +1,1205 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>8.4. Corner Detection &#8212; Intellectual Tree</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../../../_static/seu.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="9. Computer Vision" href="../../9/cv.html" />
+    <link rel="prev" title="8.3. Edge Detection" href="../3/edge.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Intellectual Tree</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Mathematics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../1/linear%20algebra.html">
+   1. Linear Algebra
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference external" href="https://eetose.github.io/docs/math/linear%20algebra/essence/">
+     Essence
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../2/statistics.html">
+   2. Probability-Statistics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../2/1/measure.html">
+     2.1. Measure Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../2/1/normal_distribution.html">
+     2.2. Normal distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Coding
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../3/datastruct.html">
+   3. Data Structure
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../3/1/heap.html">
+     3.1. Heap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../3/2/BST.html">
+     3.2. Binary Search Tree
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../3/3/graph.html">
+     3.3. Graphs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../4/algorithms.html">
+   4. Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../5/language.html">
+   5. Programming language
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../5/1/python.html">
+     5.1. Python
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../5/1/env.html">
+       Virtual environments
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../5/1/modules.html">
+       Modules
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../5/2/c.html">
+     5.2. C/C++
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  AI
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../6/ml.html">
+   6. Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../7/dl.html">
+   7. Deep Learning
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computer Vision
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../image.html">
+   8. Image processing
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1/filtering.html">
+     8.1. Image Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2/fuzzy.html">
+     8.2. Fuzzy logic theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3/edge.html">
+     8.3. Edge Detection
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     8.4. Corner Detection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../9/cv.html">
+   9. Computer Vision
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Research
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../10/results.html">
+   Daily
+   <s>
+    tasks
+   </s>
+   results
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../10/1/fields.html">
+   Research fields
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../10/1/1/how.html">
+     How-to
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../10/1/2/follows.html">
+     Following
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../10/1/3/tool.html">
+     Efficiency tools
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../10/2/project.html">
+   Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../10/2/1/smartcampus.html">
+     Data Analysis for Smart Buildings
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../10/2/2/Zeiss.html">
+     Zeiss algorithm develop
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../10/2/2/image_formation.html">
+       Image formation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../10/2/3/wpt.html">
+     WPT foreign object detection
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/shengli-seu/shengli-seu.github.io/main?urlpath=tree/chapters/8/4/corner.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/shengli-seu/shengli-seu.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/shengli-seu/shengli-seu.github.io/edit/main/chapters/8/4/corner.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/chapters/8/4/corner.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#math-background">
+   Math background
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#correlation">
+     Correlation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summed-square-difference-ssd">
+     Summed square difference (SSD)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relation-between-ssd-and-cross-correlation">
+     Relation between SSD and cross correlation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#harris-corner-detection">
+   Harris Corner Detection
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-function">
+     Error function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#second-moment-matrix">
+     Second moment matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization-of-a-quadratic">
+     Visualization of a quadratic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eigenvalues-interpretation">
+     Eigenvalues interpretation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#threshold-on-a-function-of-eigenvalues">
+     Threshold on a function of eigenvalues
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     Summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementaion-in-jupyter">
+   Implementaion in Jupyter
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step1-image-gradients">
+     Step1: Image gradients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step2-second-movement-matrix-m">
+     Step2: Second movement matrix M
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step3-compute-corner-response-function-r">
+     Step3: Compute corner response function R
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step4-corner-response-calculation-and-non-maximum-suppression">
+     Step4: Corner response calculation and Non-maximum suppression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intermediate-results-visualization">
+     Intermediate results visualization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#invariance-discussion">
+   Invariance discussion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rotation-invariance">
+     Rotation invariance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#photometric-transformations">
+     Photometric transformations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scale-invariance">
+     Scale invariance
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Corner Detection</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#math-background">
+   Math background
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#correlation">
+     Correlation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summed-square-difference-ssd">
+     Summed square difference (SSD)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relation-between-ssd-and-cross-correlation">
+     Relation between SSD and cross correlation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#harris-corner-detection">
+   Harris Corner Detection
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-function">
+     Error function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#second-moment-matrix">
+     Second moment matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization-of-a-quadratic">
+     Visualization of a quadratic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eigenvalues-interpretation">
+     Eigenvalues interpretation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#threshold-on-a-function-of-eigenvalues">
+     Threshold on a function of eigenvalues
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     Summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementaion-in-jupyter">
+   Implementaion in Jupyter
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step1-image-gradients">
+     Step1: Image gradients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step2-second-movement-matrix-m">
+     Step2: Second movement matrix M
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step3-compute-corner-response-function-r">
+     Step3: Compute corner response function R
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step4-corner-response-calculation-and-non-maximum-suppression">
+     Step4: Corner response calculation and Non-maximum suppression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intermediate-results-visualization">
+     Intermediate results visualization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#invariance-discussion">
+   Invariance discussion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rotation-invariance">
+     Rotation invariance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#photometric-transformations">
+     Photometric transformations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scale-invariance">
+     Scale invariance
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="corner-detection">
+<h1><span class="section-number">8.4. </span>Corner Detection<a class="headerlink" href="#corner-detection" title="Permalink to this headline">#</a></h1>
+<p><strong>Motivation</strong>:  shifting a window W in any direction should give a large change in intensity.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/motivation.png"><img alt="../../../_images/motivation.png" src="../../../_images/motivation.png" style="width: 493.0px; height: 252.0px;" /></a>
+</figure>
+<section id="math-background">
+<h2>Math background<a class="headerlink" href="#math-background" title="Permalink to this headline">#</a></h2>
+<section id="correlation">
+<h3>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">#</a></h3>
+<p>Given <span class="math notranslate nohighlight">\(\textbf{f - image, h - kernel}\)</span> <br>
+<span style="color:blue"> <em>cross correlation</em> </span></p>
+<div class="math notranslate nohighlight">
+\[ g=f \otimes h \]</div>
+<div class="math notranslate nohighlight">
+\[g(i, j)=\sum_{k} \sum_{l} f(i+k, j+l) h(k, l)\]</div>
+<p><span style="color:blue"> <em>auto correlation</em> </span></p>
+<div class="math notranslate nohighlight">
+\[g=f \otimes f \]</div>
+<div class="math notranslate nohighlight">
+\[g(i, j)=\sum_{k} \sum_{l} f(i+k, j+l) f(k, l)\]</div>
+<p><span style="color:blue"> <em>Normalized cross correlation</em> </span></p>
+<div class="math notranslate nohighlight">
+\[g_{N}(i,j) = \frac{\sum_{k} \sum_{l} f(i+k, j+l) h(k, l)} 
+{\sqrt{\sum_{k} \sum_{l} f^{2}(i+k, j+l)} {\sqrt{\sum_{k} \sum_{l} h^{2}(k, l)}}}\]</div>
+<p>This is used in <a class="reference external" href="https://github.com/EeToSe/drawing-recognition/blob/terminal-detection/result/terminal/D304-zhubianbenti1-result.png">template matching</a>.</p>
+</section>
+<section id="summed-square-difference-ssd">
+<h3>Summed square difference (SSD)<a class="headerlink" href="#summed-square-difference-ssd" title="Permalink to this headline">#</a></h3>
+<div class="math notranslate nohighlight">
+\[SSD(i,j)=\sum_{k} \sum_{l}(f(i+k, j+l)-h(k, l))^{2} \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} SSD(i,j)=\sum_{k} \sum_{l}\left({f(i+k, j+l)^{2}}-2 f(i+k, j+l) h(k, l)
+        +{h(k, l)^{2}}\right) \\ 
+        = \sum_{k} \sum_{l}(-2 f(i+k, j+l) h(k, l))\end{split}\]</div>
+</section>
+<section id="relation-between-ssd-and-cross-correlation">
+<h3>Relation between SSD and cross correlation<a class="headerlink" href="#relation-between-ssd-and-cross-correlation" title="Permalink to this headline">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathop{SSD(i,j)}\limits_{minimize} = \sum_{k} \sum_{l}{-2 h(i+k, j+l) f(k, l)} \\
+    \text{is equivalent  to} \\
+    \mathop{\text{cross correlation(i,j)}} \limits_{maximize} = \sum_{k} \sum_{l} 2 h(i+k, j+l) f(k, l)\end{split}\]</div>
+</section>
+</section>
+<section id="harris-corner-detection">
+<h2>Harris Corner Detection<a class="headerlink" href="#harris-corner-detection" title="Permalink to this headline">#</a></h2>
+<section id="error-function">
+<h3>Error function<a class="headerlink" href="#error-function" title="Permalink to this headline">#</a></h3>
+<p>Change in appearance of window <span class="math notranslate nohighlight">\(w\)</span> for the shift <span class="math notranslate nohighlight">\((u, v)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[E(u, v)=w(x,y)\sum_{(x, y) \in W}[I(x+u, y+v)-I(x, y)]^{2}\]</div>
+<p>First-order Taylor approximation for small shifts <span class="math notranslate nohighlight">\((u, v)\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[I(x+u, y+v) \approx \color{red} {I(x, y)}+I_{x} u+I_{y} v\]</div>
+<p>Let’s plug this into <span class="math notranslate nohighlight">\(E(u, v)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E(u, v)\approx w(x,y)\sum_{(x, y) \in W}\left[I(x, y)+I_{x} u+I_{y} v-I(x, y)\right]^{2} \\
+=w(x,y)\sum_{(x, y) \in W}\left[I_{x} u+I_{y} v\right]^{2}= w(x,y)\sum_{(x, y) \in W} I_{x}^{2} u^{2}+2 I_{x} I_{y} u v+I_{y}^{2} v^{2}\end{split}\]</div>
+</section>
+<section id="second-moment-matrix">
+<span id="section-matrix"></span><h3>Second moment matrix<a class="headerlink" href="#second-moment-matrix" title="Permalink to this headline">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}E(u, v) \approx w(x,y)(u^{2} \sum_{x, y} \color{red}{I_{x}^{2}}+ 2 u v \sum_{x, y} \color{red}{I_{x} I_{y}}+v^{2} \sum_{x, y} \color{red}{I_{y}^{2}}) \\
+=\left(\begin{array}{ll}u &amp; v\end{array}\right)M\left(\begin{array}{l}u \\ v\end{array}\right) \end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} M = \sum_{x, y}w(x,y)\left[\color{red}{\begin{array}{cc} I_{x}^{2} &amp; I_{x} I_{y} \\  I_{x} I_{y} &amp; I_{y}^{2}\end{array}}\right] = \left[\begin{array}{cc}
+ A &amp; B \\
+ B &amp; C   
+\end{array}\right]\end{split}\]</div>
+<p>This matrix is weighted sum of nearby gradient information (could use Gaussian weighting).</p>
+</section>
+<section id="visualization-of-a-quadratic">
+<h3>Visualization of a quadratic<a class="headerlink" href="#visualization-of-a-quadratic" title="Permalink to this headline">#</a></h3>
+<p>From <a class="reference internal" href="#section-matrix"><span class="std std-ref">previous section</span></a>, <span class="math notranslate nohighlight">\(E(u, v)\)</span> is <strong>locally</strong> approximated by a quadratic form.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/quadratic.png"><img alt="../../../_images/quadratic.png" src="../../../_images/quadratic.png" style="width: 1139.0px; height: 362.0px;" /></a>
+</figure>
+<p>Since <span class="math notranslate nohighlight">\(M\)</span> is symmetric, <span class="math notranslate nohighlight">\(M\)</span> could be diagonalized as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} M=R^{-1}\left[\begin{array}{cc}
+\lambda_{1} &amp; 0 \\
+0 &amp; \lambda_{2}
+\end{array}\right] R\end{split}\]</div>
+<div class="admonition-ellipse-equation admonition">
+<p class="admonition-title">Ellipse equation</p>
+<p>Visualize <span class="math notranslate nohighlight">\(M\)</span> as an ellipse with <strong>axis lengths</strong> determined by
+the eigenvalues and <strong>orientation</strong> determined by <span class="math notranslate nohighlight">\(R\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left(\begin{array}{ll}u &amp; v\end{array}\right)M\left(\begin{array}{l}u \\ v\end{array}\right) = const\end{split}\]</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/ellipse.png"><img alt="../../../_images/ellipse.png" src="../../../_images/ellipse.png" style="width: 514.0px; height: 254.0px;" /></a>
+</figure>
+</div>
+</section>
+<section id="eigenvalues-interpretation">
+<h3>Eigenvalues interpretation<a class="headerlink" href="#eigenvalues-interpretation" title="Permalink to this headline">#</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/eigenvalue.png"><img alt="../../../_images/eigenvalue.png" src="../../../_images/eigenvalue.png" style="width: 592.0px; height: 347.0px;" /></a>
+</figure>
+<div class="admonition-take-away admonition">
+<p class="admonition-title">Take-away</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda_{1}\)</span> and <span class="math notranslate nohighlight">\(\lambda_{2}\)</span> both small: no gradient</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda_{1} \gg \lambda_{2}\)</span> : gradient in one direction</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda_{1}\)</span> and <span class="math notranslate nohighlight">\(\lambda_{2}\)</span> similarly large: multiple gradient directions, corner</p></li>
+</ul>
+</div>
+</section>
+<section id="threshold-on-a-function-of-eigenvalues">
+<h3>Threshold on a function of eigenvalues<a class="headerlink" href="#threshold-on-a-function-of-eigenvalues" title="Permalink to this headline">#</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/corner-response.png"><img alt="../../../_images/corner-response.png" src="../../../_images/corner-response.png" style="width: 483.0px; height: 291.0px;" /></a>
+</figure>
+<div class="admonition-corner-response-r admonition">
+<p class="admonition-title">Corner response <span class="math notranslate nohighlight">\(R\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\operatorname{det}(M)=\lambda_{1} \lambda_{2} = AB - C^2\\
+\operatorname{trace}(\mathrm{M})=\lambda_{1}+\lambda_{2} = A + B\\
+R = \operatorname{det}(M)- \alpha \operatorname{trace}(M)^{2} = \lambda_{1} \lambda_{2} - \alpha(\lambda_{1}+\lambda_{2})^{2}\end{split}\]</div>
+<p>If these estimates are large, <span class="math notranslate nohighlight">\(\lambda_{1}\)</span> and <span class="math notranslate nohighlight">\(\lambda_{2}\)</span> are similarly large.</p>
+</div>
+</section>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h3>
+<p>Source code: <a class="reference external" href="https://github.com/EeToSe/ELEC4622-2019s2/tree/master/project3/project3/task4">C++</a> and <a class="reference external" href="https://github.com/EeToSe/image-cv/blob/main/image_analysis/src/ass3/harris_detector.py">Python</a> implementation.</p>
+<ul class="simple">
+<li><p>Intensity change in direction [u,v] can be expressed as a bilinear form:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}E(u, v) \approx \left(\begin{array}{ll}u &amp; v\end{array}\right)M\left(\begin{array}{l}u \\ v\end{array}\right)\end{split}\]</div>
+<ul class="simple">
+<li><p>Compute corner response for each point in terms of eigenvalues of <span class="math notranslate nohighlight">\(M\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[R = \lambda_{1} \lambda_{2} - \alpha(\lambda_{1}+\lambda_{2})^{2}\]</div>
+<ul class="simple">
+<li><p>A good corner should have a large intensity change in all directions, i.e. R should be large positive.</p></li>
+</ul>
+<div class="admonition-pipeline admonition">
+<p class="admonition-title">Pipeline</p>
+<ol class="simple">
+<li><p>Compute partial derivatives <span class="math notranslate nohighlight">\(I_{x}\)</span> and <span class="math notranslate nohighlight">\(I_{y}\)</span> at each pixel</p></li>
+<li><p>Compute products of derivatives at every pixel</p></li>
+<li><p>Compute the sums of the products of derivatives at each pixel</p></li>
+<li><p>Compute second moment matrix <span class="math notranslate nohighlight">\(M\)</span> in a Gaussian window around each pixel</p></li>
+<li><p>Compute corner response function <span class="math notranslate nohighlight">\(R=\operatorname{det}(M)-\alpha \operatorname{trace}(M)^{2}\)</span></p></li>
+<li><p>Threshold <span class="math notranslate nohighlight">\(R\)</span></p></li>
+<li><p>Find local maxima of response function (NMS)</p></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="implementaion-in-jupyter">
+<h2><a class="reference external" href="https://github.com/EeToSe/image-cv/blob/main/image_analysis/src/ass3/harris.ipynb">Implementaion</a> in Jupyter<a class="headerlink" href="#implementaion-in-jupyter" title="Permalink to this headline">#</a></h2>
+<section id="step1-image-gradients">
+<h3>Step1: Image gradients<a class="headerlink" href="#step1-image-gradients" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s2">&quot;../../data/ass3/rice.png&quot;</span><span class="p">)</span>
+<span class="n">h</span><span class="p">,</span><span class="n">w</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
+<span class="c1"># keep the output datatype to some higher forms</span>
+<span class="n">Ix</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">cv</span><span class="o">.</span><span class="n">CV_64F</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">ksize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">abs_Ix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">Ix</span><span class="p">)</span>
+<span class="n">Ix_8u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">abs_Ix</span><span class="p">)</span>
+<span class="n">Iy</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">cv</span><span class="o">.</span><span class="n">CV_64F</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">ksize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">abs_Iy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">Iy</span><span class="p">)</span>
+<span class="n">Iy_8u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">abs_Iy</span><span class="p">)</span>
+
+<span class="n">subplots</span><span class="p">([</span><span class="n">Ix_8u</span><span class="p">,</span> <span class="n">Iy_8u</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Ix&#39;</span><span class="p">,</span> <span class="s1">&#39;Iy&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/corner_18_0.png" src="../../../_images/corner_18_0.png" />
+</div>
+</div>
+</section>
+<section id="step2-second-movement-matrix-m">
+<h3>Step2: Second movement matrix M<a class="headerlink" href="#step2-second-movement-matrix-m" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gaussian truncate window</span>
+<span class="n">kernel_size</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">Ixx</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">Ix</span><span class="o">**</span><span class="mi">2</span><span class="p">,(</span><span class="n">kernel_size</span><span class="p">,</span><span class="n">kernel_size</span><span class="p">),</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">Ixy</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">Ix</span><span class="o">*</span><span class="n">Iy</span><span class="p">,(</span><span class="n">kernel_size</span><span class="p">,</span><span class="n">kernel_size</span><span class="p">),</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">Iyy</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">Iy</span><span class="o">**</span><span class="mi">2</span><span class="p">,(</span><span class="n">kernel_size</span><span class="p">,</span><span class="n">kernel_size</span><span class="p">),</span> <span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step3-compute-corner-response-function-r">
+<h3>Step3: Compute corner response function R<a class="headerlink" href="#step3-compute-corner-response-function-r" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">offset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">corner_response</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">))</span>
+
+<span class="c1"># construct matrix elements</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">height</span><span class="o">-</span><span class="n">offset</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">width</span><span class="o">-</span><span class="n">offset</span><span class="p">):</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Ixx</span><span class="p">[</span><span class="n">y</span><span class="o">-</span><span class="n">offset</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="n">offset</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">offset</span><span class="p">])</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Iyy</span><span class="p">[</span><span class="n">y</span><span class="o">-</span><span class="n">offset</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="n">offset</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">offset</span><span class="p">])</span>
+        <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Ixy</span><span class="p">[</span><span class="n">y</span><span class="o">-</span><span class="n">offset</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="n">offset</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">offset</span><span class="p">])</span>
+        <span class="n">det</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">*</span> <span class="n">C</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">B</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">trace</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">C</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">det</span> <span class="o">-</span> <span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">trace</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">corner_response</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step4-corner-response-calculation-and-non-maximum-suppression">
+<h3>Step4: Corner response calculation and Non-maximum suppression<a class="headerlink" href="#step4-corner-response-calculation-and-non-maximum-suppression" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Response threshold 0.2*r_max </span>
+<span class="n">R_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">corner_response</span><span class="p">)</span>
+<span class="n">Threshold_mask</span> <span class="o">=</span> <span class="n">corner_response</span> <span class="o">&gt;</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">R_max</span>
+<span class="c1"># Non max suppression mask</span>
+<span class="n">NMS_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">corner_response</span> <span class="o">==</span> <span class="n">maximum_filter</span><span class="p">(</span><span class="n">corner_response</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">Threshold_mask</span> <span class="o">&amp;</span> <span class="n">NMS_mask</span>
+<span class="n">keypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">mask</span><span class="o">==</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># compare with open source library</span>
+<span class="c1"># keypoints = corner_peaks(corner_harris(image), min_distance=5, threshold_rel=0.02)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="intermediate-results-visualization">
+<h3>Intermediate results visualization<a class="headerlink" href="#intermediate-results-visualization" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">imgs</span> <span class="o">=</span>  <span class="p">[</span><span class="n">Ix_8u</span><span class="p">,</span> <span class="n">Iy_8u</span><span class="p">,</span> <span class="n">Threshold_mask</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">image</span><span class="p">]</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Ix&#39;</span><span class="p">,</span> <span class="s1">&#39;Iy&#39;</span><span class="p">,</span> <span class="s1">&#39;Thresholded corner response&#39;</span><span class="p">,</span> <span class="s1">&#39;Non-maximal suppression&#39;</span><span class="p">,</span> <span class="s1">&#39;Original image&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">imgs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([]),</span><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">imgs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">keypoints</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">keypoints</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Harris corners&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([]),</span><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/corner_26_0.png" src="../../../_images/corner_26_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="invariance-discussion">
+<h2>Invariance discussion<a class="headerlink" href="#invariance-discussion" title="Permalink to this headline">#</a></h2>
+<section id="rotation-invariance">
+<h3>Rotation invariance<a class="headerlink" href="#rotation-invariance" title="Permalink to this headline">#</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/rotation.png"><img alt="../../../_images/rotation.png" src="../../../_images/rotation.png" style="width: 599.0px; height: 300.0px;" /></a>
+</figure>
+<div class="admonition-corner-response-r-is-invariant-to-image-rotation admonition">
+<p class="admonition-title">Corner response R is invariant to image rotation</p>
+<p>Since Ellipse rotates but its shape (i.e. eigenvalues) remains the same.</p>
+</div>
+</section>
+<section id="photometric-transformations">
+<h3>Photometric transformations<a class="headerlink" href="#photometric-transformations" title="Permalink to this headline">#</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/intensity.png"><img alt="../../../_images/intensity.png" src="../../../_images/intensity.png" style="width: 667.0px; height: 321.0px;" /></a>
+</figure>
+<div class="admonition-partial-invariance-to-additive-and-multiplicative-intensity-changes admonition">
+<p class="admonition-title">Partial invariance to additive and multiplicative intensity changes</p>
+<p><strong>Not</strong> invariant to changes in contrast.</p>
+</div>
+</section>
+<section id="scale-invariance">
+<h3>Scale invariance<a class="headerlink" href="#scale-invariance" title="Permalink to this headline">#</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../_images/scale.png"><img alt="../../../_images/scale.png" src="../../../_images/scale.png" style="width: 560.0px; height: 287.0px;" /></a>
+</figure>
+<div class="admonition-not-invariant-to-scaling admonition">
+<p class="admonition-title">Not invariant to scaling</p>
+<p>Blob detection with Laplacian kernel could solve this.</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/8/4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../3/edge.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">8.3. </span>Edge Detection</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../9/cv.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Computer Vision</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Sheng Li<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
