@@ -63,6 +63,8 @@ parts:
     - file: chapters/8/4/corner
   # computer vision
   - file: chapters/9/cv
+    sections:
+    - file: chapters/9/1/sift
 
 # Research
 - caption: Research
