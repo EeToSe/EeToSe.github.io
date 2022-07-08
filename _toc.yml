@@ -65,7 +65,8 @@ parts:
   - file: chapters/9/cv
     sections:
     - file: chapters/9/1/sift
-
+    - file: chapters/9/2/homography
+      
 # Research
 - caption: Research
   chapters:
