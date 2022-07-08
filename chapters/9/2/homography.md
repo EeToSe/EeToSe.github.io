@@ -159,7 +159,7 @@ $$x_{d}^{(i)}\left(h_{31} x_{s}^{(i)}+h_{32} y_{s}^{(i)}+h_{33}\right)=h_{11} x_
 
 Linear equation, fixing $h_{33} = 1$:
 
-$$\left[\begin{array}{cccccccc}x_{s}^{(i)} & y_{s}^{(i)} & 1 & 0 & 0 & 0 & -x_{d}^{(i)} x_{s}^{(i)} & -x_{d}^{(i)} y_{s}^{(i)}   \\ 0 & 0 & 0 & x_{s}^{(i)} & y_{s}^{(i)} & 1 & -y_{d}^{(i)} x_{s}^{(i)} & -y_{d}^{(i)} y_{s}^{(i)} \end{array}\right]\left[\begin{array}{l}h_{11} \\ h_{12} \\ h_{13} \\ h_{21} \\ h_{22} \\ h_{23} \\ h_{31} \\ h_{32} \\ h_{33}\end{array}\right]=\left[\begin{array}{l} x_{d}^{(i)} \\  y_{d}^{(i)}\end{array}\right]$$
+$$\left[\begin{array}{cccccccc}x_{s}^{(i)} & y_{s}^{(i)} & 1 & 0 & 0 & 0 & -x_{d}^{(i)} x_{s}^{(i)} & -x_{d}^{(i)} y_{s}^{(i)}   \\ 0 & 0 & 0 & x_{s}^{(i)} & y_{s}^{(i)} & 1 & -y_{d}^{(i)} x_{s}^{(i)} & -y_{d}^{(i)} y_{s}^{(i)} \end{array}\right]\left[\begin{array}{l}h_{11} \\ h_{12} \\ h_{13} \\ h_{21} \\ h_{22} \\ h_{23} \\ h_{31} \\ h_{32} \end{array}\right]=\left[\begin{array}{l} x_{d}^{(i)} \\  y_{d}^{(i)}\end{array}\right]$$
 
 ```{admonition} Normal equation 
 Solution to $\mathbf{A x}=\mathbf{b}$:

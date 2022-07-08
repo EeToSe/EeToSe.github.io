@@ -66,24 +66,28 @@ parts:
     sections:
     - file: chapters/9/1/sift
     - file: chapters/9/2/homography
-      
+
 # Research
 - caption: Research
   chapters:
-  - file: chapters/10/results
-  # research fields
-  - file: chapters/10/1/fields
+  # misc
+  - file: chapters/10/1/misc
     sections:
-    - file: chapters/10/1/1/how
-    - file: chapters/10/1/2/follows
-    - file: chapters/10/1/3/tool
+    - file: chapters/10/1/1/problem
+    - file: chapters/10/1/2/results
+  # research fields
+  - file: chapters/10/2/fields
+    sections:
+    - file: chapters/10/2/1/how
+    - file: chapters/10/2/2/follows
+    - file: chapters/10/2/3/tool
   # projects
-  - file: chapters/10/2/project
+  - file: chapters/10/3/project
     sections:   
-    - file: chapters/10/2/1/smartcampus
-    - file: chapters/10/2/2/Zeiss 
+    - file: chapters/10/3/1/smartcampus
+    - file: chapters/10/3/2/Zeiss 
       sections:
-      - file: chapters/10/2/2/image_formation
-    - file: chapters/10/2/3/wpt
+      - file: chapters/10/3/2/image_formation
+    - file: chapters/10/3/3/wpt
 
 
