@@ -1,4 +1,5 @@
 # Linear Algebra
+[Math understanding exchange](https://math.stackexchange.com/)
 
 **Essence**
 <u>Geometric intuition</u>: an introduction to [visualizing](https://www.3blue1brown.com/topics/linear-algebra) what matrices are really doing
