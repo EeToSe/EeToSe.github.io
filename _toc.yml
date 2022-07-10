@@ -14,7 +14,7 @@ parts:
   # - file: chapters/Convexity
   - file: chapters/1/linear algebra
     sections:
-    - url: https://eetose.github.io/docs/math/linear%20algebra/essence/
+    - url: https://github.com/EeToSe/Archived-EeToSe.github.io/blob/master/docs/math/linear%20algebra/essence.md
       title: Essence
   - file: chapters/2/statistics
     sections: 
