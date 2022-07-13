@@ -6,6 +6,10 @@ Task lists
 2. Optical technology: **phase shift deflectometry** (fringe pattern generating and raw images)
 3. Image fusion:**compute image channels** (e.g. grayscale, modulation, phase and so on)
 4. **Image registration**: camera section cropping
+   - Down-sample patten and input images to try increasing execution speed. 
+   - Testing algo robustness with “hard samples” offered by AE and record execution time; 
+   - Test algo for side-walk bottom images. 
+   - Documentation and presentation
 5. **Image segmentation** otsu thresholding: logo cropping
 6. **Contours detection**
 7. Object detection with deep learning
