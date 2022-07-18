@@ -38,6 +38,7 @@
 - [Tom Preston](https://tom.preston-werner.com/2008/10/18/how-i-turned-down-300k.html): Github cofounder
 - [Sreenivas B. Youtube](https://www.youtube.com/watch?v=Ijc-9L2iXEc&list=PLZsOBAyNTZwYx-7GylDo3LSYpSompzsqW) ZEISS Head of Digital Solutions 
 - [Yuxin Wu](https://ppwwyyxx.com/) from stitching
+- [Yang Zhou](https://people.umass.edu/~yangzhou/) makeittalk
 
 ### Phd students
 - [Xinjing Zhou](https://zxjcarrot.github.io/): inspiration we can do it!
