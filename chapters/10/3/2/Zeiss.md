@@ -9,7 +9,7 @@ Task lists
    - Down-sample patten and input images to try increasing execution speed. 
    - Testing algo robustness with “hard samples” offered by AE and record execution time; 
    - Test algo for side-walk bottom images. 
-   - Documentation and presentation
+   - Code manual and report presentation of sift
 5. **Image segmentation** otsu thresholding: logo cropping
 6. **Contours detection**
 7. Object detection with deep learning
