@@ -1,3 +1,6 @@
+# Strong applications
+[A Five-Minute Guide to Ph.D. Program Applications](https://pg.ucsd.edu/PhD-application-tips.htm)
+
 # How-to
 - Improve study efficiency from Edvard Moser, Nobel price
   - curiosity and motivation
