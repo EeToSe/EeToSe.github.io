@@ -1,6 +1,3 @@
-# Strong applications
-[A Five-Minute Guide to Ph.D. Program Applications](https://pg.ucsd.edu/PhD-application-tips.htm)
-
 # How-to
 - Improve study efficiency from Edvard Moser, Nobel price
   - curiosity and motivation
@@ -19,3 +16,6 @@
 - Steve Jobs [Commencement address](https://news.stanford.edu/2005/06/14/jobs-061505/)
 
   Again, `you can’t connect the dots looking forward`; you can only connect them looking backward. So you have to trust that the dots will somehow connect in your future. You have to trust in something your gut, destiny, life, karma, whatever. Because believing that the dots will connect down the road will give you the confidence to follow your heart even when it leads you off the **well-worn path**, and that will made all the difference.
+
+- Strong applications
+[A Five-Minute Guide to Ph.D. Program Applications](https://pg.ucsd.edu/PhD-application-tips.htm)

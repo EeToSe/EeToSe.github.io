@@ -22,10 +22,9 @@
   - 凡是尽最大努力，做好眼下活
 
 
-
 ## Research
 ### Academic 
-- [陈丹琦](https://www.cs.princeton.edu/~danqic/) Princeton AP
+- [陈丹琦](https://www.cs.princeton.edu/~danqic/) and [useful links to be successfully PhD](https://www.cs.princeton.edu/~danqic/misc.html) Princeton AP
 - [马腾宇](https://ai.stanford.edu/~tengyuma/) Stanford AP <u>long term effect</u> 切忌急功近利
 - [付杰](https://mp.weixin.qq.com/s/YPuDwH7f_diKpFLOrGrgQw) 从二本生到 ICLR 杰出论文奖
 

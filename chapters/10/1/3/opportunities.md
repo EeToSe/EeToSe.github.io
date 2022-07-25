@@ -1,9 +1,4 @@
----
-layout: default
-title: opportunities
-nav_order: 1
-parent: Resources
----
+# Where to seek opportunities
 
 ## research groups
 - UCF [Center for Research in CV](https://www.crcv.ucf.edu/) 
