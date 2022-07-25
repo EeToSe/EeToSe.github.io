@@ -27,6 +27,7 @@
 - [陈丹琦](https://www.cs.princeton.edu/~danqic/) and [useful links to be successfully PhD](https://www.cs.princeton.edu/~danqic/misc.html) Princeton AP
 - [马腾宇](https://ai.stanford.edu/~tengyuma/) Stanford AP <u>long term effect</u> 切忌急功近利
 - [付杰](https://mp.weixin.qq.com/s/YPuDwH7f_diKpFLOrGrgQw) 从二本生到 ICLR 杰出论文奖
+- [Jinshan Pan](http://ccfcv.ccf.org.cn/c/2020-02-15/695154.shtml) and [Ming-Hsuan Yang](http://faculty.ucmerced.edu/mhyang/course/eecs286-2016/index.htm)
 
 ### Industry
 - [Kaiming He](http://kaiminghe.com/) ResNets 
