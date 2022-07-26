@@ -18,7 +18,7 @@ Computer vision
 1. 7月-9月中旬：打牢基础: Math, ML/DL, Algorithms
 2. 做科研的态度、格局、专注、严谨、实践
 3. supervisor 明确明确专业方向、职业规划、实习想法
-4. 10月开始联系CSC联合培养导师
+4. 10月开始联系CSC联合培养导师, [东南国际合作处-赵老师]https://oic.seu.edu.cn/18959/list.htm
 5. 23年2月开始 [往期通知](https://seugs.seu.edu.cn/2022/0221/c28944a399225/page.htm)
 
 ## Milestones
