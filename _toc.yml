@@ -74,7 +74,7 @@ parts:
   - file: chapters/10/2/fields
     sections:
     - file: chapters/10/2/1/how
-    - file: chapters/10/2/2/follows
+    - file: chapters/10/2/2/following
     - file: chapters/10/2/2/outreach
     - file: chapters/10/2/3/tool
   # projects
