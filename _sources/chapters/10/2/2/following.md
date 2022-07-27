@@ -1,6 +1,6 @@
 # Following
 
-## Masters mindset - How to research
+## Masters mindset 
 - Albert Einstein
   - Logic will get you from A to B. Imagination will take you everywhere.
   
@@ -22,8 +22,8 @@
   - 凡是尽最大努力，做好眼下活
 
 
-## Research
-### Academic 
+## AI 
+### Academic researchers
 - [陈丹琦](https://www.cs.princeton.edu/~danqic/) and [useful links to be successfully PhD](https://www.cs.princeton.edu/~danqic/misc.html) Princeton AP
 - [马腾宇](https://ai.stanford.edu/~tengyuma/) Stanford AP <u>long term effect</u> 切忌急功近利
 - [付杰](https://mp.weixin.qq.com/s/YPuDwH7f_diKpFLOrGrgQw) 从二本生到 ICLR 杰出论文奖
@@ -47,7 +47,7 @@
 - [Yufei Ye](https://judyye.github.io/): self presentation and course outline
 
 
-## Programming
+### Programming
 - [Chris](https://blog.kowalczyk.info/): sumatrapdf creator
   - [Essential Python](https://www.programming-books.io/essential/python/)
   - [Good Programming Practice](https://blog.kowalczyk.info/article/14r/good-programming-practices.html)

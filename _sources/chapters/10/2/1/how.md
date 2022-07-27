@@ -1,8 +1,4 @@
-# How-to
-- Improve study efficiency from Edvard Moser, Nobel price
-  - curiosity and motivation
-  - understanding and insights(pull information together->different point of view->critical attitude): activate the network in different approaches makes it so much more robust. 提高你应对different contents的generalization 能力.
-  - sleep and rest
+# How-to-Research
 - Richard Hamming(Hamming window/distance)["You and Your Research"](https://www.youtube.com/watch?v=a1zDuOPkMSw&list=WL&index=7&t=6s)
 
 - [张辉](http://www.cs.cmu.edu/~hzhang/) and from his link [Advice on Research and Writing](http://www.cs.cmu.edu/afs/cs.cmu.edu/user/mleone/web/how-to.html)
@@ -19,3 +15,12 @@
 
 - Strong applications
 [A Five-Minute Guide to Ph.D. Program Applications](https://pg.ucsd.edu/PhD-application-tips.htm)
+
+- [CV Phd guide](https://www.cs.princeton.edu/~danqic/misc.html)
+
+- Improve study efficiency from Edvard Moser, Nobel price
+  - curiosity and motivation
+  - understanding and insights(pull information together->different point of view->critical attitude): activate the network in different approaches makes it so much more robust. 提高你应对different contents的generalization 能力.
+  - sleep and rest
+
+- [Conference deadlines](https://aideadlin.es/?sub=ML,NLP)
