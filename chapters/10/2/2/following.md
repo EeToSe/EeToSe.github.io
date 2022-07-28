@@ -28,6 +28,7 @@
 - [马腾宇](https://ai.stanford.edu/~tengyuma/) Stanford AP <u>long term effect</u> 切忌急功近利
 - [付杰](https://mp.weixin.qq.com/s/YPuDwH7f_diKpFLOrGrgQw) 从二本生到 ICLR 杰出论文奖
 - [Jinshan Pan](http://ccfcv.ccf.org.cn/c/2020-02-15/695154.shtml) and [Ming-Hsuan Yang](http://faculty.ucmerced.edu/mhyang/course/eecs286-2016/index.htm)
+- [南开 程明明课题组](https://mmcheng.net/), DOCX
 
 ### Industry
 - [Kaiming He](http://kaiminghe.com/) ResNets 
