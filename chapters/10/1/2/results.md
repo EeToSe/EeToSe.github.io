@@ -22,5 +22,7 @@ Computer vision
 5. 23年2月开始 [往期通知](https://seugs.seu.edu.cn/2022/0221/c28944a399225/page.htm)
 
 ## Milestones
-09/03/2022 博士入学
-07/2022  第一学期课程结束，开始恶补知识
+2022/03/09 博士入学<br>
+2022/07  第一学期课程结束，开始恶补知识 <br>
+2022/08/07 cs229 lec 1&2 -> [Matrix power](https://github.com/Visualize-ML/Book4_Power-of-Matrix)
+2022/08/08 mind map of cs229 lec 1&2
