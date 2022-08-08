@@ -24,3 +24,5 @@
   - sleep and rest
 
 - [Conference deadlines](https://aideadlin.es/?sub=ML,NLP)
+
+- 从历史看 {download}`从历史看大学品流 <./uni-classification.pdf>`
