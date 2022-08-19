@@ -31,3 +31,4 @@ Computer vision
 2022/08/12 MIT 6.012 start **random variable**
 2022/08/16 cs229 review problem sets
 2022/08/18 MIT 6.012 **continuous r.v.** -> **Computer Graphics** Game Engine John Carmack & John Romero -> Palmer Luckey Oculus VR 
+20022/08/19 stay and study with gf -> finish review of probability theory
