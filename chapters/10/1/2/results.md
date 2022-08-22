@@ -24,11 +24,12 @@ Computer vision
 ## Milestones
 2022/03/09 博士入学<br>
 2022/07  第一学期课程结束，开始恶补知识 <br>
-2022/08/07 cs229 lec 1&2 -> [Matrix power](https://github.com/Visualize-ML/Book4_Power-of-Matrix)
-2022/08/08 mind map of cs229 lec 1&2 -> 开会准备下个月数学组的讨论
-2022/08/09 [VALSE](https://space.bilibili.com/562085182/video?tid=0&page=8&keyword=&order=pubdate) -> [科研与英文学术论文写作指南](https://mmlab-iie.github.io/course/)
-2022/08/10 cs229 lec 3 review of probability theory -> [MIT 6.012 before random variable](https://www.bilibili.com/video/BV1LE411B7ir?p=49&vd_source=328603c9551807bb076c87ab1208ace6)
-2022/08/12 MIT 6.012 start **random variable**
-2022/08/16 cs229 review problem sets
-2022/08/18 MIT 6.012 **continuous r.v.** -> **Computer Graphics** Game Engine John Carmack & John Romero -> Palmer Luckey Oculus VR 
-20022/08/19 stay and study with gf -> finish review of probability theory
+2022/08/07 cs229 lec 1&2 -> [Matrix power](https://github.com/Visualize-ML/Book4_Power-of-Matrix) <br>
+2022/08/08 mind map of cs229 lec 1&2 -> 开会准备下个月数学组的讨论 <br>
+2022/08/09 [VALSE](https://space.bilibili.com/562085182/video?tid=0&page=8&keyword=&order=pubdate) -> [科研与英文学术论文写作指南](https://mmlab-iie.github.io/course/) <br>
+2022/08/10 cs229 lec 3 review of probability theory -> [MIT 6.012 before random variable](https://www.bilibili.com/video/BV1LE411B7ir?p=49&vd_source=328603c9551807bb076c87ab1208ace6) <br>
+2022/08/12 MIT 6.012 start **random variable** <br> 
+2022/08/16 cs229 review problem sets <br>
+2022/08/18 MIT 6.012 **continuous r.v.** -> **Computer Graphics** Game Engine John Carmack & John Romero -> Palmer Luckey Oculus VR <br>
+2022/08/19 stay and study with gf -> finish review of probability theory <br>
+2022/08/22 recover from 3-day dating <br>
