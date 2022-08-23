@@ -33,3 +33,4 @@ Computer vision
 2022/08/18 MIT 6.012 **continuous r.v.** -> **Computer Graphics** Game Engine John Carmack & John Romero -> Palmer Luckey Oculus VR <br>
 2022/08/19 stay and study with gf -> finish review of probability theory <br>
 2022/08/22 recover from 3-day dating <br>
+2022/08/23 Group meeting of NJCAM affairs -> Continuous r.v. -> [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) <br>
