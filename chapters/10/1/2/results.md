@@ -34,3 +34,5 @@ Computer vision
 2022/08/19 stay and study with gf -> finish review of probability theory <br>
 2022/08/22 recover from 3-day dating <br>
 2022/08/23 Group meeting of NJCAM affairs -> Continuous r.v. -> [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) <br>
+2022/08/24 Try WSL -> develop in a Linux-based ENV from windows system<br>
+2022/08/25 MIT Missing lec2 -> 日常事务处理
