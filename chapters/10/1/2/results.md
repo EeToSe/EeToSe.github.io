@@ -37,3 +37,6 @@ Computer vision
 2022/08/24 Try WSL -> develop in a Linux-based ENV from windows system<br>
 2022/08/25 MIT Missing lec2 -> 日常事务处理<br>
 2022/08/27 Find CS109 [course reader](https://chrispiech.github.io/probabilityForComputerScientists/en/part1/bayes_theorem/) -> 统计学习方法 李航
+2022/08/30 四牌楼体检 -> dating -> think about it
+2022/08/31 https://www.aminer.org/ 
+2022/09/01 处理中心离站事务->send girlfriend -> Jordan Peterson -> George Orwell
