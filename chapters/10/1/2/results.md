@@ -41,3 +41,4 @@ Computer vision
 2022/08/31 https://www.aminer.org/ <br>
 2022/09/01 处理中心离站事务->send girlfriend -> Jordan Peterson -> George Orwell <br>
 2022/09/03 [Can you get an MIT education for $2,000?](https://www.youtube.com/watch?v=piSLobJfZ3c&ab_channel=TEDxTalks) -> [MIT EECS](https://eecsis.mit.edu/degree_requirements.html#track) -> Lego Flower<br>
+2022/09/08 finish Stanford 109 -> really enjoy uncertainty theory(Beta, sampling, bootstrapping, p-value) -> CS 3 (Nand2Tetris+Programming languages+Algorithms)
