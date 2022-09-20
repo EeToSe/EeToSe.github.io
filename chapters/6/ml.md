@@ -1,6 +1,11 @@
 # Machine Learning
 **Road-map** from low-mid level to high level vision
 
+- Signal and System
+- Digital Signal Processing
+- Modern Digital Signal Processing
+- ML ["Probabilistic Machine Learning"](https://probml.github.io/pml-book/) - a book series by Kevin Murphy  
+
 Reference:
 [AIRankings](https://airankings.org/#scope=world&fromYear=2012&toYear=2022&sort=adj&venues=pami%7Cijcv%7Ccviu%7Cpr%7Cftcgv%7Ccvpr%7Ciccv%7Ceccv)
 
