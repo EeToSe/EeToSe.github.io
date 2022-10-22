@@ -1,18 +1,3 @@
-# Daily <s>tasks</s> results
-Math
-- [Math channel](https://www.youtube.com/user/mathematicalmonk/playlists)
-
-Algorithms
-- [MIT algorithms](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/)
-
-Machine Learning
-- [CS229](https://cs229.stanford.edu/syllabus-fall2021.html)
-- [ML in Python](https://www.youtube.com/playlist?list=PLZsOBAyNTZwaQB9nUTYUYNhz7b22bAJYY)
-
-Computer vision
-- [CMU Computer Vision](http://16385.courses.cs.cmu.edu/spring2022/home)
-- [Image processing in Python](https://www.youtube.com/playlist?list=PLZsOBAyNTZwYx-7GylDo3LSYpSompzsqW&ab_channel=DigitalSreeni)
-- [Essential Python](https://www.programming-books.io/essential/python/)  
 
 ## Short-term plans
 1. 7月-9月中旬：打牢基础: Math, ML/DL, Algorithms
@@ -42,5 +27,5 @@ Computer vision
 2022/09/01 处理中心离站事务->send girlfriend -> Jordan Peterson -> George Orwell <br>
 2022/09/03 [Can you get an MIT education for $2,000?](https://www.youtube.com/watch?v=piSLobJfZ3c&ab_channel=TEDxTalks) -> [MIT EECS](https://eecsis.mit.edu/degree_requirements.html#track) -> Lego Flower<br>
 2022/09/08 finish Stanford 109 -> really enjoy uncertainty theory(Beta, sampling, bootstrapping, p-value) -> CS 3 (Nand2Tetris+Programming languages+Algorithms)
-2022/09/29 CMU CMU 16-824 Visual Learning and Recognition [Repo](https://github.com/EeToSe/visual-learning) & [16-726 Learning-Based Image Synthesis](https://learning-image-synthesis.github.io/sp22/lectures/) & [Basic Pytorch Examples](https://github.com/jcjohnson/pytorch-examples)
+2022/09/29 [Basic Pytorch Examples](https://github.com/jcjohnson/pytorch-examples)
 2022/10/21 Consider changing the current jupyter-book website and create a new personal blog with the [Jon Barron](https://jonbarron.info/) [jekyll fork](https://github.com/leonidk/new_website) and reviewing [Phd survival guide](https://eugenevinitsky.github.io/posts/expectation_setting.html)

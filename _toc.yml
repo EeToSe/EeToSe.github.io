@@ -8,89 +8,115 @@ title: About me
 # sections:
 # - file: chapters/research/notebooks
 parts:
-- caption: Mathematics
-  numbered: 2
-  chapters:
-  # - file: chapters/Convexity
-  - file: chapters/1/linear algebra
-    sections:
-    - url: https://github.com/EeToSe/Archived-EeToSe.github.io/blob/master/docs/math/linear%20algebra/essence.md
-      title: Essence
-  - file: chapters/2/statistics
-    sections: 
-    - file: chapters/2/1/measure
-    - file: chapters/2/1/normal_distribution
-
-- caption: Coding
-  numbered: 2                     # Only the Coding part is numbered
-  chapters:
-  # data structure
-  - file: chapters/3/datastruct
-    sections:
-    - file: chapters/3/1/heap
-    - file: chapters/3/2/BST
-    - file: chapters/3/3/graph 
-
-  # algorithms   
-  - file: chapters/4/algorithms
-
-  # language 
-  - file: chapters/5/language
-    sections:
-    # Python
-    - file: chapters/5/1/python
+  - caption: Learning Notes
+    numbered: 2
+    chapters:
+    # computer vision and image processing
+    - file: chapters/8/image
       sections:
-      - file: chapters/5/1/env
-      - file: chapters/5/1/modules
-    # C/C++
-    - file: chapters/5/2/c 
+      - file: chapters/8/1/filtering
+      - file: chapters/8/2/fuzzy 
+      - file: chapters/8/3/edge
+      - file: chapters/8/4/corner
+      - file: chapters/9/1/sift
+      - file: chapters/9/2/homography
 
-- caption: AI
-  numbered: 2
-  chapters:
-  - file: chapters/6/ml
-  - file: chapters/7/dl
+    # machine learning and deep learning
+    - file: chapters/6/ml
+      # sections:
 
-- caption: Computer Vision
-  numbered: 2
-  chapters:
-  # image processing
-  - file: chapters/8/image
-    sections:
-    - file: chapters/8/1/filtering
-    - file: chapters/8/2/fuzzy 
-    - file: chapters/8/3/edge
-    - file: chapters/8/4/corner
-  # computer vision
-  - file: chapters/9/cv
-    sections:
-    - file: chapters/9/1/sift
-    - file: chapters/9/2/homography
-
-# Research
-- caption: Research
-  chapters:
-  # research fields
-  - file: chapters/10/2/fields
-    sections:
-    - file: chapters/10/2/1/how
-    - file: chapters/10/2/2/following
-    - file: chapters/10/2/2/outreach
-    - file: chapters/10/2/3/tool
-  # projects
-  - file: chapters/10/3/project
-    sections:   
-    - file: chapters/10/3/1/smartcampus
-    - file: chapters/10/3/2/Zeiss 
+  - caption: Research
+    numbered: False
+    chapters:
+    # research fields
+    - file: chapters/10/research
       sections:
-      - file: chapters/10/3/2/image_formation
-    - file: chapters/10/3/3/wpt
-    - file: chapters/10/3/4/panorama
-  # misc
-  - file: chapters/10/1/misc
-    sections:
-    - file: chapters/10/1/1/problem
-    - file: chapters/10/1/2/results
+      - file: chapters/10/2/1/how
+      - file: chapters/10/2/2/following
+
+# - caption: Mathematics
+#   numbered: 2
+#   chapters:
+#   # - file: chapters/Convexity
+#   - file: chapters/1/linear algebra
+#     sections:
+#     - url: https://github.com/EeToSe/Archived-EeToSe.github.io/blob/master/docs/math/linear%20algebra/essence.md
+#       title: Essence
+#   - file: chapters/2/statistics
+#     sections: 
+#     - file: chapters/2/1/measure
+#     - file: chapters/2/1/normal_distribution
+
+# - caption: Coding
+#   numbered: 2                     # Only the Coding part is numbered
+#   chapters:
+#   # data structure
+#   - file: chapters/3/datastruct
+#     sections:
+#     - file: chapters/3/1/heap
+#     - file: chapters/3/2/BST
+#     - file: chapters/3/3/graph 
+
+#   # algorithms   
+#   - file: chapters/4/algorithms
+
+#   # language 
+#   - file: chapters/5/language
+#     sections:
+#     # Python
+#     - file: chapters/5/1/python
+#       sections:
+#       - file: chapters/5/1/env
+#       - file: chapters/5/1/modules
+#     # C/C++
+#     - file: chapters/5/2/c 
+
+# - caption: AI
+#   numbered: 2
+#   chapters:
+#   - file: chapters/6/ml
+#   - file: chapters/7/dl
+
+# - caption: Computer Vision
+#   numbered: 2
+#   chapters:
+#   # image processing
+#   - file: chapters/8/image
+#     sections:
+#     - file: chapters/8/1/filtering
+#     - file: chapters/8/2/fuzzy 
+#     - file: chapters/8/3/edge
+#     - file: chapters/8/4/corner
+#   # computer vision
+#   - file: chapters/9/cv
+#     sections:
+#     - file: chapters/9/1/sift
+#     - file: chapters/9/2/homography
+
+# # Research
+# - caption: Research
+#   chapters:
+#   # research fields
+#   - file: chapters/10/2/fields
+#     sections:
+#     - file: chapters/10/2/1/how
+#     - file: chapters/10/2/2/following
+#     - file: chapters/10/2/2/outreach
+#     - file: chapters/10/2/3/tool
+#   # projects
+#   - file: chapters/10/3/project
+#     sections:   
+#     - file: chapters/10/3/1/smartcampus
+#     - file: chapters/10/3/2/Zeiss 
+#       sections:
+#       - file: chapters/10/3/2/image_formation
+#     - file: chapters/10/3/3/wpt
+#     - file: chapters/10/3/4/panorama
+#   # misc
+#   - file: chapters/10/1/misc
+#     sections:
+#     - file: chapters/10/1/1/problem
+#     - file: chapters/10/1/2/results
 
 
 

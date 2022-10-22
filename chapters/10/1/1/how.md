@@ -1,4 +1,4 @@
-# How-to-Research
+# Phd Survive Guide
 - Richard Hamming(Hamming window/distance)["You and Your Research"](https://www.youtube.com/watch?v=a1zDuOPkMSw&list=WL&index=7&t=6s)
 
 - [张辉](http://www.cs.cmu.edu/~hzhang/) and from his link [Advice on Research and Writing](http://www.cs.cmu.edu/afs/cs.cmu.edu/user/mleone/web/how-to.html)
@@ -15,16 +15,14 @@
   
 - [Expectation Setting for a PhD](https://eugenevinitsky.github.io/posts/expectation_setting.html )
 
-- Strong applications
-[A Five-Minute Guide to Ph.D. Program Applications](https://pg.ucsd.edu/PhD-application-tips.htm)
+- [CV Phd guide](https://www.cs.princeton.edu/~danqic/misc.html) from 李丹琦
+  
+- Strong applications [A Five-Minute Guide to Ph.D. Program Applications](https://pg.ucsd.edu/PhD-application-tips.htm)
 
-- [CV Phd guide](https://www.cs.princeton.edu/~danqic/misc.html)
 
-- Improve study efficiency from Edvard Moser, Nobel price
+- Improve study efficiency from [Edvard Moser](https://space.bilibili.com/1195438888?spm_id_from=333.337.0.0)
   - curiosity and motivation
   - understanding and insights(pull information together->different point of view->critical attitude): activate the network in different approaches makes it so much more robust. 提高你应对different contents的generalization 能力.
   - sleep and rest
-
-- [Conference deadlines](https://aideadlin.es/?sub=ML,NLP)
 
 - 从历史看 {download}`从历史看大学品流 <./uni-classification.pdf>`
