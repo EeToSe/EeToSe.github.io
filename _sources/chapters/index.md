@@ -1,6 +1,6 @@
 # Steve's Learning Notes
 
-It takes half your life before you discover life is a do-it-yourself project
+*It takes half your life before you discover life is a do-it-yourself project*.
 
 ## About
 

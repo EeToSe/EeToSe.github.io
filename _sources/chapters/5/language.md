@@ -1,4 +1,0 @@
-# Programming language
-
-```{tableofcontents}
-```
